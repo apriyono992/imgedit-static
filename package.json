@@ -9,16 +9,38 @@
     "lint": "eslint .",
     "preview": "vite preview"
   },
+  "browserslist": [
+    "Chrome >= 90",
+    "Firefox >= 90",
+    "Safari >= 14",
+    "Edge >= 90"
+  ],
   "dependencies": {
+    "@imgly/background-removal": "^1.7.0",
+    "@tailwindcss/vite": "^4.3.1",
+    "@tanstack/react-query": "^5.101.1",
+    "clsx": "^2.1.1",
+    "date-fns": "^4.4.0",
+    "file-saver": "^2.0.5",
+    "lucide-react": "^1.21.0",
+    "pica": "^10.0.2",
     "react": "^19.2.7",
-    "react-dom": "^19.2.7"
+    "react-dom": "^19.2.7",
+    "react-hot-toast": "^2.6.0",
+    "react-image-crop": "^11.1.2",
+    "react-router-dom": "^7.18.0",
+    "tailwind-merge": "^3.6.0",
+    "tailwindcss": "^4.3.1",
+    "zustand": "^5.0.14"
   },
   "devDependencies": {
     "@babel/core": "^7.29.7",
     "@eslint/js": "^10.0.1",
     "@rolldown/plugin-babel": "^0.2.3",
     "@types/babel__core": "^7.20.5",
+    "@types/file-saver": "^2.0.7",
     "@types/node": "^24.13.2",
+    "@types/pica": "^9.0.5",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.2",
