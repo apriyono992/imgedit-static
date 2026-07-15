@@ -3,8 +3,9 @@ import { Link } from 'react-router-dom'
 import {
   ImageIcon, Crop, Scaling, Eraser, FileImage, ArrowUpDown,
   Shield, Zap, Gift, Menu, X, ChevronDown, ChevronUp,
-  Star, Lock, Cpu, Layers,
+  Star, Cpu, Layers, UserX,
 } from 'lucide-react'
+import { ThemeToggle } from '@/components/common/ThemeToggle'
 
 // ── Editor Mockup ─────────────────────────────────────────────────────────────
 
@@ -12,13 +13,13 @@ function EditorMockup() {
   return (
     <div className="relative w-full max-w-lg mx-auto">
       <div className="absolute -inset-4 rounded-3xl blur-2xl" style={{ background: 'rgba(79,70,229,0.2)' }} />
-      <div className="relative bg-gray-900 border border-gray-700/60 rounded-2xl overflow-hidden shadow-2xl shadow-black/60">
+      <div className="relative bg-white border border-gray-300 dark:bg-gray-900 dark:border-gray-700/60 rounded-2xl overflow-hidden shadow-2xl shadow-gray-400/40 dark:shadow-black/60">
         {/* Window chrome */}
-        <div className="flex items-center gap-2 px-4 py-2.5 bg-gray-950 border-b border-gray-800">
+        <div className="flex items-center gap-2 px-4 py-2.5 bg-gray-100 border-b border-gray-300 dark:bg-gray-950 dark:border-gray-800">
           <span className="w-3 h-3 rounded-full bg-red-500/70" />
           <span className="w-3 h-3 rounded-full bg-yellow-500/70" />
           <span className="w-3 h-3 rounded-full bg-emerald-500/70" />
-          <div className="flex-1 ml-2 h-4 bg-gray-800 rounded-md" />
+          <div className="flex-1 ml-2 h-4 bg-gray-200 dark:bg-gray-800 rounded-md" />
         </div>
         {/* Editor body */}
         <div className="flex" style={{ height: 220 }}>
@@ -37,22 +38,22 @@ function EditorMockup() {
               <ImageIcon size={36} className="text-indigo-300/60" />
             </div>
             <div className="absolute top-3 right-3 flex gap-1.5">
-              <span className="px-2 py-0.5 bg-gray-800/90 border border-gray-700 rounded text-[10px] text-gray-400">Sebelum</span>
+              <span className="px-2 py-0.5 bg-gray-800/90 border border-gray-700 rounded text-[10px] text-gray-300">Sebelum</span>
               <span className="px-2 py-0.5 bg-indigo-600/80 rounded text-[10px] text-white">Sesudah</span>
             </div>
           </div>
           {/* Tool panel */}
-          <div className="w-36 border-l border-gray-800 p-2.5 flex flex-col gap-2">
+          <div className="w-36 border-l border-gray-300 dark:border-gray-800 p-2.5 flex flex-col gap-2">
             <div className="grid grid-cols-5 gap-0.5">
               {[0, 1, 2, 3, 4].map((i) => (
-                <div key={i} className={`h-7 rounded-md ${i === 1 ? 'bg-indigo-600/50 border border-indigo-500/40' : 'bg-gray-800'}`} />
+                <div key={i} className={`h-7 rounded-md ${i === 1 ? 'bg-indigo-600/50 border border-indigo-500/40' : 'bg-gray-200 dark:bg-gray-800'}`} />
               ))}
             </div>
             <div className="mt-1 space-y-1.5">
-              <div className="h-2 bg-gray-800 rounded" style={{ width: '75%' }} />
-              <div className="h-2 bg-gray-800 rounded" style={{ width: '55%' }} />
+              <div className="h-2 bg-gray-200 dark:bg-gray-800 rounded" style={{ width: '75%' }} />
+              <div className="h-2 bg-gray-200 dark:bg-gray-800 rounded" style={{ width: '55%' }} />
               <div className="flex gap-1 mt-2">
-                {[0, 1, 2].map((i) => <div key={i} className="h-5 bg-gray-800 rounded flex-1" />)}
+                {[0, 1, 2].map((i) => <div key={i} className="h-5 bg-gray-200 dark:bg-gray-800 rounded flex-1" />)}
               </div>
               <div className="h-2 bg-indigo-600/30 rounded-full overflow-hidden mt-1">
                 <div className="h-full bg-indigo-500 rounded-full" style={{ width: '65%' }} />
@@ -77,7 +78,6 @@ const features = [
     desc: 'Potong gambar dengan rasio bebas atau preset: 1:1, 16:9, 4:3, 3:2.',
     iconColor: '#a78bfa',
     iconBg: 'rgba(139,92,246,0.15)',
-    hoverBorder: '#7c3aed40',
   },
   {
     icon: Scaling,
@@ -85,7 +85,6 @@ const features = [
     desc: 'Ubah dimensi gambar dengan algoritma lanczos berkualitas tinggi.',
     iconColor: '#60a5fa',
     iconBg: 'rgba(96,165,250,0.15)',
-    hoverBorder: '#2563eb40',
   },
   {
     icon: Eraser,
@@ -93,7 +92,6 @@ const features = [
     desc: 'Hapus background otomatis via AI — gambarmu tidak keluar dari browser.',
     iconColor: '#34d399',
     iconBg: 'rgba(52,211,153,0.15)',
-    hoverBorder: '#05966940',
   },
   {
     icon: FileImage,
@@ -101,7 +99,6 @@ const features = [
     desc: 'Konversi ke JPEG, PNG, atau WebP dengan kontrol kualitas output.',
     iconColor: '#fbbf24',
     iconBg: 'rgba(251,191,36,0.15)',
-    hoverBorder: '#d9770640',
   },
   {
     icon: ArrowUpDown,
@@ -109,19 +106,18 @@ const features = [
     desc: 'Perbesar hingga 4× atau perkecil gambar — tanpa kehilangan detail.',
     iconColor: '#818cf8',
     iconBg: 'rgba(129,140,248,0.15)',
-    hoverBorder: '#4f46e540',
   },
 ]
 
 const stats = [
   { icon: Layers, value: '5', label: 'Tool Edit' },
-  { icon: Lock, value: '0 KB', label: 'Data Dikirim' },
+  { icon: UserX, value: '0', label: 'Akun Diperlukan' },
   { icon: Cpu, value: 'AI', label: 'Remove Background' },
   { icon: Gift, value: '100%', label: 'Gratis' },
 ]
 
 const steps = [
-  { num: '01', title: 'Upload Gambar', desc: 'Drag & drop atau klik — pilih file JPEG, PNG, WebP, GIF, sampai 30 MB.' },
+  { num: '01', title: 'Upload Gambar', desc: 'Drag & drop atau klik — pilih file JPEG, PNG, WebP, GIF, sampai 30 MB. Tanpa daftar, tanpa login.' },
   { num: '02', title: 'Pilih Tool & Edit', desc: 'Sesuaikan crop, resize, background, format, atau skala sesuai kebutuhan.' },
   { num: '03', title: 'Download Hasil', desc: 'Gambar siap pakai tersimpan langsung ke perangkatmu dalam hitungan detik.' },
 ]
@@ -132,7 +128,7 @@ const testimonials = [
     role: 'Desainer Grafis',
     avatar: 'R',
     color: '#4f46e5',
-    text: 'Akhirnya bisa hapus background tanpa Photoshop! AI-nya akurat dan yang paling penting gratis. Sekarang workflow saya jauh lebih cepat.',
+    text: 'Akhirnya bisa hapus background tanpa Photoshop, dan tanpa perlu bikin akun dulu! AI-nya akurat, workflow saya jauh lebih cepat.',
     stars: 5,
   },
   {
@@ -140,7 +136,7 @@ const testimonials = [
     role: 'Fotografer',
     avatar: 'S',
     color: '#7c3aed',
-    text: 'Crop dan resize langsung di browser tanpa perlu install apapun. Simpel, cepat, dan hasilnya bersih. Cocok banget buat kebutuhan sehari-hari.',
+    text: 'Crop dan resize langsung di browser tanpa install apapun dan tanpa login. Buka tab, edit, download. Secepat itu.',
     stars: 5,
   },
   {
@@ -148,12 +144,16 @@ const testimonials = [
     role: 'Content Creator',
     avatar: 'B',
     color: '#0891b2',
-    text: 'Remove background-nya benar-benar jalan di browser, bukan di server. Privasi terjaga dan gratis. Ini yang selama ini aku cari!',
+    text: 'Remove background-nya benar-benar jalan di browser, bukan di server. Privasi terjaga, gratis, dan tanpa akun. Ini yang selama ini aku cari!',
     stars: 5,
   },
 ]
 
 const faqs = [
+  {
+    q: 'Apakah perlu daftar akun?',
+    a: 'Tidak sama sekali. Imegedit tidak punya sistem akun atau login — buka halaman editor dan langsung mulai edit gambar dalam hitungan detik.',
+  },
   {
     q: 'Apakah gambar saya aman dan privat?',
     a: 'Ya, 100% aman. Semua proses — termasuk AI remove background — terjadi sepenuhnya di browser dan perangkatmu. Gambarmu tidak pernah dikirim ke server manapun.',
@@ -168,11 +168,7 @@ const faqs = [
   },
   {
     q: 'Apakah benar-benar gratis selamanya?',
-    a: 'Ya, semua fitur — crop, resize, remove background, reformat, dan upscale — tersedia gratis tanpa batas. Tidak perlu kartu kredit.',
-  },
-  {
-    q: 'Apakah perlu daftar akun?',
-    a: 'Tidak perlu. Imegedit tidak punya sistem akun — buka editor dan langsung mulai edit gambar.',
+    a: 'Ya, semua fitur — crop, resize, remove background, reformat, dan upscale — tersedia gratis tanpa batas. Tidak perlu kartu kredit, tidak perlu akun.',
   },
 ]
 
@@ -181,20 +177,20 @@ const faqs = [
 function FaqItem({ q, a }: { q: string; a: string }) {
   const [open, setOpen] = useState(false)
   return (
-    <div className="border border-gray-800 rounded-xl overflow-hidden">
+    <div className="bg-white border border-gray-300 shadow-sm dark:bg-transparent dark:border-gray-800 dark:shadow-none rounded-xl overflow-hidden">
       <button
         onClick={() => setOpen((v) => !v)}
-        className="w-full flex items-center justify-between px-5 py-4 text-left hover:bg-gray-900 transition-colors"
+        className="w-full flex items-center justify-between px-5 py-4 text-left hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors"
       >
-        <span className="font-medium text-gray-200 text-sm pr-4">{q}</span>
+        <span className="font-medium text-gray-800 dark:text-gray-200 text-sm pr-4">{q}</span>
         {open ? (
-          <ChevronUp size={16} className="text-indigo-400 shrink-0" />
+          <ChevronUp size={16} className="text-indigo-500 dark:text-indigo-400 shrink-0" />
         ) : (
-          <ChevronDown size={16} className="text-gray-500 shrink-0" />
+          <ChevronDown size={16} className="text-gray-500 dark:text-gray-500 shrink-0" />
         )}
       </button>
       {open && (
-        <div className="px-5 pb-4 text-sm text-gray-400 leading-relaxed border-t border-gray-800 pt-3">
+        <div className="px-5 pb-4 text-sm text-gray-700 dark:text-gray-400 leading-relaxed border-t border-gray-300 dark:border-gray-800 pt-3">
           {a}
         </div>
       )}
@@ -208,36 +204,40 @@ export function LandingPage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <div className="min-h-screen bg-gray-950 text-gray-100">
+    <div className="min-h-screen bg-gray-50 text-gray-900 dark:bg-gray-950 dark:text-gray-100">
 
       {/* ── Navbar ── */}
-      <nav className="sticky top-0 z-40 bg-gray-950/90 backdrop-blur-md border-b border-gray-900">
+      <nav className="sticky top-0 z-40 bg-white/95 dark:bg-gray-950/90 backdrop-blur-md border-b border-gray-300 dark:border-gray-900">
         <div className="max-w-6xl mx-auto px-5 sm:px-8 flex items-center justify-between py-4">
           <div className="flex items-center gap-2">
             <ImageIcon className="text-indigo-500" size={22} />
-            <span className="font-bold text-lg text-gray-100">Imegedit</span>
+            <span className="font-bold text-lg text-gray-900 dark:text-gray-100">Imegedit</span>
           </div>
 
           {/* Desktop nav */}
           <div className="hidden sm:flex items-center gap-3">
+            <ThemeToggle />
             <Link to="/editor" className="px-4 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-medium rounded-lg transition-colors">
               Mulai Edit
             </Link>
           </div>
 
-          {/* Mobile hamburger */}
-          <button
-            onClick={() => setMobileMenuOpen((v) => !v)}
-            className="sm:hidden p-2 text-gray-400 hover:text-gray-100 transition-colors"
-            aria-label="Toggle menu"
-          >
-            {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
-          </button>
+          {/* Mobile controls */}
+          <div className="flex items-center gap-2 sm:hidden">
+            <ThemeToggle />
+            <button
+              onClick={() => setMobileMenuOpen((v) => !v)}
+              className="p-2 text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100 transition-colors"
+              aria-label="Toggle menu"
+            >
+              {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile dropdown menu */}
         {mobileMenuOpen && (
-          <div className="sm:hidden border-t border-gray-800 bg-gray-950">
+          <div className="sm:hidden border-t border-gray-300 bg-white dark:border-gray-800 dark:bg-gray-950">
             <div className="px-5 py-3 space-y-1">
               <Link
                 to="/editor"
@@ -252,37 +252,45 @@ export function LandingPage() {
       </nav>
 
       {/* ── Hero — single column, selalu center di semua ukuran layar ── */}
-      <section className="max-w-3xl mx-auto px-5 sm:px-8 pt-16 pb-10 text-center">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-indigo-600/15 border border-indigo-600/30 rounded-full text-indigo-400 text-xs font-medium mb-6">
-            <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-pulse" />
-            100% berjalan di browser — gambarmu aman
+      <section className="relative max-w-3xl mx-auto px-5 sm:px-8 pt-16 pb-10 text-center overflow-hidden">
+          {/* Background glow — hanya dekoratif */}
+          <div
+            className="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 w-[36rem] h-[36rem] rounded-full blur-3xl opacity-40 dark:opacity-30"
+            style={{ background: 'radial-gradient(circle, rgba(129,140,248,0.35), transparent 70%)' }}
+          />
+
+          <div className="relative inline-flex items-center gap-2 px-3 py-1.5 bg-indigo-600/10 border border-indigo-600/30 rounded-full text-indigo-600 dark:text-indigo-400 text-xs font-medium mb-6">
+            <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 dark:bg-indigo-400 animate-pulse" />
+            100% di browser, tanpa akun, tanpa ribet
           </div>
 
-          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-gray-100 leading-tight mb-5">
+          <h1 className="relative text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 dark:text-gray-100 leading-tight mb-5">
             Edit gambar{' '}
-            <span style={{ background: 'linear-gradient(135deg,#818cf8,#c084fc)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+            <span style={{ background: 'linear-gradient(135deg,#6366f1,#a855f7)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
               profesional
             </span>
-            <br />langsung di browser
+            <br />tanpa daftar, tanpa ribet
           </h1>
 
-          <p className="text-lg text-gray-400 leading-relaxed mb-8 max-w-xl mx-auto">
-            Crop, resize, hapus background, reformat, dan upscale gambar — semua gratis, semua privat, langsung download hasilnya.
+          <p className="relative text-lg text-gray-600 dark:text-gray-400 leading-relaxed mb-8 max-w-xl mx-auto">
+            Crop, resize, hapus background, reformat, dan upscale gambar — langsung dari browser.
+            Tidak perlu bikin akun, tidak perlu login. Buka, edit, download.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-8">
+          <div className="relative flex flex-col sm:flex-row items-center justify-center gap-3 mb-8">
             <Link to="/editor" className="w-full sm:w-auto px-6 py-3 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-xl transition-colors text-sm text-center" style={{ boxShadow: '0 8px 24px rgba(79,70,229,0.3)' }}>
-              Mulai Edit Gratis →
+              Mulai Edit Sekarang →
             </Link>
           </div>
 
-          <div className="flex flex-wrap gap-4 justify-center">
+          <div className="relative flex flex-wrap gap-4 justify-center">
             {[
+              { icon: UserX, label: 'Tanpa akun' },
               { icon: Shield, label: 'Tanpa upload ke server' },
               { icon: Zap, label: 'Proses instan' },
               { icon: Gift, label: 'Gratis selamanya' },
             ].map(({ icon: Icon, label }) => (
-              <div key={label} className="flex items-center gap-2 text-sm text-gray-500">
+              <div key={label} className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-500">
                 <Icon size={14} className="text-indigo-500 shrink-0" />
                 {label}
               </div>
@@ -290,7 +298,7 @@ export function LandingPage() {
           </div>
 
           {/* Mockup — selalu visible, centered, di bawah teks */}
-          <div className="mt-12 max-w-lg mx-auto">
+          <div className="relative mt-12 max-w-lg mx-auto">
             <EditorMockup />
           </div>
       </section>
@@ -299,10 +307,10 @@ export function LandingPage() {
       <section className="max-w-4xl mx-auto px-5 sm:px-8 pb-16">
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
           {stats.map(({ icon: Icon, value, label }) => (
-            <div key={label} className="bg-gray-900 border border-gray-800 rounded-xl p-4 text-center">
-              <Icon size={18} className="text-indigo-400 mx-auto mb-2" />
-              <p className="text-2xl font-bold text-gray-100 mb-0.5">{value}</p>
-              <p className="text-xs text-gray-500">{label}</p>
+            <div key={label} className="bg-white border border-gray-300 shadow-md dark:bg-gray-900 dark:border-gray-800 dark:shadow-none rounded-xl p-4 text-center">
+              <Icon size={18} className="text-indigo-500 dark:text-indigo-400 mx-auto mb-2" />
+              <p className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-0.5">{value}</p>
+              <p className="text-xs text-gray-600 dark:text-gray-500">{label}</p>
             </div>
           ))}
         </div>
@@ -311,14 +319,14 @@ export function LandingPage() {
       {/* ── Features ── */}
       <section className="max-w-5xl mx-auto px-5 sm:px-8 pb-20">
         <div className="text-center mb-12">
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-100 mb-3">5 Tool lengkap</h2>
-          <p className="text-gray-500">Semua yang kamu butuhkan, tanpa instalasi apapun</p>
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-3">5 Tool lengkap</h2>
+          <p className="text-gray-600 dark:text-gray-500">Semua yang kamu butuhkan, tanpa instalasi dan tanpa akun</p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {features.map((f) => (
             <div
               key={f.title}
-              className="bg-gray-900 border border-gray-800 hover:border-gray-700 rounded-xl p-5 transition-all group cursor-default"
+              className="bg-white border border-gray-300 shadow-md hover:border-gray-400 hover:shadow-lg dark:bg-gray-900 dark:border-gray-800 dark:shadow-none dark:hover:border-gray-700 rounded-xl p-5 transition-all group cursor-default"
             >
               <div
                 className="w-10 h-10 rounded-xl flex items-center justify-center mb-4 transition-transform group-hover:scale-110"
@@ -326,8 +334,8 @@ export function LandingPage() {
               >
                 <f.icon size={20} style={{ color: f.iconColor }} />
               </div>
-              <h3 className="font-semibold text-gray-100 mb-2">{f.title}</h3>
-              <p className="text-sm text-gray-500 leading-relaxed">{f.desc}</p>
+              <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-2">{f.title}</h3>
+              <p className="text-sm text-gray-600 dark:text-gray-500 leading-relaxed">{f.desc}</p>
             </div>
           ))}
         </div>
@@ -336,20 +344,20 @@ export function LandingPage() {
       {/* ── How it works ── */}
       <section className="max-w-3xl mx-auto px-5 sm:px-8 pb-20">
         <div className="text-center mb-12">
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-100 mb-3">Cara pakai</h2>
-          <p className="text-gray-500">3 langkah, selesai dalam hitungan detik</p>
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-3">Cara pakai</h2>
+          <p className="text-gray-600 dark:text-gray-500">3 langkah, tanpa daftar akun, selesai dalam hitungan detik</p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
           {steps.map((s, i) => (
             <div key={s.num} className="relative text-center">
               {i < steps.length - 1 && (
-                <div className="hidden sm:block absolute top-5 left-[60%] w-[40%] border-t-2 border-dashed border-gray-800" />
+                <div className="hidden sm:block absolute top-5 left-[60%] w-[40%] border-t-2 border-dashed border-gray-300 dark:border-gray-800" />
               )}
-              <div className="w-12 h-12 rounded-full bg-indigo-600/20 border-2 border-indigo-600/40 flex items-center justify-center mx-auto mb-4 relative z-10" style={{ background: '#030712' }}>
-                <span className="text-indigo-400 font-bold text-sm">{s.num}</span>
+              <div className="w-12 h-12 rounded-full bg-white dark:bg-gray-950 border-2 border-indigo-600/50 shadow-md dark:shadow-none flex items-center justify-center mx-auto mb-4 relative z-10">
+                <span className="text-indigo-500 dark:text-indigo-400 font-bold text-sm">{s.num}</span>
               </div>
-              <h3 className="font-semibold text-gray-200 mb-2">{s.title}</h3>
-              <p className="text-sm text-gray-500 leading-relaxed">{s.desc}</p>
+              <h3 className="font-semibold text-gray-800 dark:text-gray-200 mb-2">{s.title}</h3>
+              <p className="text-sm text-gray-600 dark:text-gray-500 leading-relaxed">{s.desc}</p>
             </div>
           ))}
         </div>
@@ -358,12 +366,12 @@ export function LandingPage() {
       {/* ── Testimonials ── */}
       <section className="max-w-5xl mx-auto px-5 sm:px-8 pb-20">
         <div className="text-center mb-12">
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-100 mb-3">Apa kata mereka</h2>
-          <p className="text-gray-500">Digunakan oleh desainer, fotografer, dan kreator konten</p>
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-3">Apa kata mereka</h2>
+          <p className="text-gray-600 dark:text-gray-500">Digunakan oleh desainer, fotografer, dan kreator konten</p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
           {testimonials.map((t) => (
-            <div key={t.name} className="bg-gray-900 border border-gray-800 rounded-xl p-5 flex flex-col gap-4">
+            <div key={t.name} className="bg-white border border-gray-300 shadow-md dark:bg-gray-900 dark:border-gray-800 dark:shadow-none rounded-xl p-5 flex flex-col gap-4">
               {/* Stars */}
               <div className="flex gap-1">
                 {Array.from({ length: t.stars }).map((_, i) => (
@@ -371,9 +379,9 @@ export function LandingPage() {
                 ))}
               </div>
               {/* Quote */}
-              <p className="text-sm text-gray-400 leading-relaxed flex-1">"{t.text}"</p>
+              <p className="text-sm text-gray-700 dark:text-gray-400 leading-relaxed flex-1">"{t.text}"</p>
               {/* Author */}
-              <div className="flex items-center gap-3 pt-2 border-t border-gray-800">
+              <div className="flex items-center gap-3 pt-2 border-t border-gray-200 dark:border-gray-800">
                 <div
                   className="w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold text-white shrink-0"
                   style={{ background: t.color }}
@@ -381,8 +389,8 @@ export function LandingPage() {
                   {t.avatar}
                 </div>
                 <div>
-                  <p className="text-sm font-medium text-gray-200">{t.name}</p>
-                  <p className="text-xs text-gray-500">{t.role}</p>
+                  <p className="text-sm font-medium text-gray-800 dark:text-gray-200">{t.name}</p>
+                  <p className="text-xs text-gray-600 dark:text-gray-500">{t.role}</p>
                 </div>
               </div>
             </div>
@@ -392,18 +400,18 @@ export function LandingPage() {
 
       {/* ── Privacy ── */}
       <section className="max-w-3xl mx-auto px-5 sm:px-8 pb-20">
-        <div className="bg-gray-900 border border-gray-800 rounded-2xl p-8 text-center">
+        <div className="bg-white border border-gray-300 shadow-md dark:bg-gray-900 dark:border-gray-800 dark:shadow-none rounded-2xl p-8 text-center">
           <div className="w-12 h-12 bg-emerald-500/15 rounded-xl flex items-center justify-center mx-auto mb-4">
-            <Shield className="text-emerald-400" size={24} />
+            <Shield className="text-emerald-500 dark:text-emerald-400" size={24} />
           </div>
-          <h2 className="text-xl font-bold text-gray-100 mb-3">Privasi 100%</h2>
-          <p className="text-gray-400 leading-relaxed max-w-lg mx-auto mb-6">
+          <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-3">Privasi 100%, tanpa akun</h2>
+          <p className="text-gray-700 dark:text-gray-400 leading-relaxed max-w-lg mx-auto mb-6">
             Semua proses editing — termasuk AI remove background — terjadi sepenuhnya di perangkatmu.
-            Gambar <strong className="text-gray-300">tidak pernah</strong> dikirim ke server manapun.
+            Gambar <strong className="text-gray-800 dark:text-gray-300">tidak pernah</strong> dikirim ke server manapun, dan kamu tidak perlu membuat akun untuk memakainya.
           </p>
           <div className="flex flex-wrap justify-center gap-3">
-            {['Tidak ada upload', 'Tidak ada cloud storage', 'Tidak ada tracking gambar'].map((t) => (
-              <span key={t} className="px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 rounded-full text-xs font-medium">
+            {['Tidak ada upload', 'Tidak ada akun', 'Tidak ada tracking gambar'].map((t) => (
+              <span key={t} className="px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 rounded-full text-xs font-medium">
                 ✓ {t}
               </span>
             ))}
@@ -414,8 +422,8 @@ export function LandingPage() {
       {/* ── FAQ ── */}
       <section className="max-w-2xl mx-auto px-5 sm:px-8 pb-20">
         <div className="text-center mb-10">
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-100 mb-3">Pertanyaan umum</h2>
-          <p className="text-gray-500">Ada yang ingin kamu tanyakan?</p>
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-3">Pertanyaan umum</h2>
+          <p className="text-gray-600 dark:text-gray-500">Ada yang ingin kamu tanyakan?</p>
         </div>
         <div className="space-y-3">
           {faqs.map((faq) => (
@@ -426,12 +434,15 @@ export function LandingPage() {
 
       {/* ── CTA ── */}
       <section className="max-w-2xl mx-auto px-5 sm:px-8 pb-24 text-center">
-        <div className="bg-gray-900 border border-indigo-600/20 rounded-2xl p-10" style={{ background: 'linear-gradient(135deg, rgba(79,70,229,0.08), rgba(109,40,217,0.08))' }}>
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-100 mb-3">
+        <div
+          className="bg-white border border-indigo-600/30 shadow-md dark:bg-gray-900 dark:shadow-none rounded-2xl p-10"
+          style={{ backgroundImage: 'linear-gradient(135deg, rgba(79,70,229,0.08), rgba(109,40,217,0.08))' }}
+        >
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-3">
             Siap mulai mengedit?
           </h2>
-          <p className="text-gray-400 mb-8 max-w-sm mx-auto">
-            Gratis, tanpa akun, tanpa batas fitur. Mulai dalam 30 detik.
+          <p className="text-gray-700 dark:text-gray-400 mb-8 max-w-sm mx-auto">
+            Gratis, tanpa akun, tanpa batas fitur. Mulai dalam 30 detik — tidak perlu isi formulir apapun.
           </p>
           <Link
             to="/editor"
@@ -444,28 +455,28 @@ export function LandingPage() {
       </section>
 
       {/* ── Footer ── */}
-      <footer className="border-t border-gray-900">
+      <footer className="border-t border-gray-300 dark:border-gray-900">
         <div className="max-w-5xl mx-auto px-5 sm:px-8 py-10">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-8">
             {/* Brand */}
             <div>
               <div className="flex items-center gap-2 mb-3">
                 <ImageIcon className="text-indigo-500" size={20} />
-                <span className="font-bold text-gray-100">Imegedit</span>
+                <span className="font-bold text-gray-900 dark:text-gray-100">Imegedit</span>
               </div>
-              <p className="text-sm text-gray-500 leading-relaxed">
-                Editor gambar berbasis browser. Privat, gratis, dan instan — tanpa upload ke server.
+              <p className="text-sm text-gray-600 dark:text-gray-500 leading-relaxed">
+                Editor gambar berbasis browser. Privat, gratis, instan, dan tanpa akun — tanpa upload ke server.
               </p>
             </div>
 
             {/* Links */}
             <div>
-              <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">Menu</p>
+              <p className="text-xs font-semibold text-gray-700 dark:text-gray-400 uppercase tracking-wider mb-3">Menu</p>
               <div className="space-y-2">
                 {[
                   { to: '/editor', label: 'Mulai Edit' },
                 ].map((l) => (
-                  <Link key={l.to} to={l.to} className="block text-sm text-gray-500 hover:text-gray-300 transition-colors">
+                  <Link key={l.to} to={l.to} className="block text-sm text-gray-600 hover:text-gray-900 dark:text-gray-500 dark:hover:text-gray-300 transition-colors">
                     {l.label}
                   </Link>
                 ))}
@@ -474,23 +485,23 @@ export function LandingPage() {
 
             {/* Features */}
             <div>
-              <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">Fitur</p>
+              <p className="text-xs font-semibold text-gray-700 dark:text-gray-400 uppercase tracking-wider mb-3">Fitur</p>
               <div className="space-y-2">
                 {['Crop', 'Resize', 'Remove Background', 'Reformat', 'Upscale'].map((f) => (
-                  <p key={f} className="text-sm text-gray-500">{f}</p>
+                  <p key={f} className="text-sm text-gray-600 dark:text-gray-500">{f}</p>
                 ))}
               </div>
             </div>
           </div>
 
-          <div className="border-t border-gray-900 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-gray-600">
-            <p>© 2026 Imegedit. Dibuat dengan ❤ — semua proses di perangkatmu.</p>
+          <div className="border-t border-gray-300 dark:border-gray-900 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-gray-500 dark:text-gray-600">
+            <p>© 2026 Imegedit. Dibuat dengan ❤ — semua proses di perangkatmu, tanpa akun.</p>
             <div className="flex gap-4">
               <span>Privasi terjaga</span>
               <span>·</span>
               <span>Tanpa upload</span>
               <span>·</span>
-              <span>Open source</span>
+              <span>Tanpa akun</span>
             </div>
           </div>
         </div>

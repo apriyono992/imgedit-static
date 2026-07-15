@@ -36,12 +36,12 @@ function ActivePanel() {
     default:
       return (
         <div className="py-8 text-center space-y-4">
-          <p className="text-gray-500 text-sm">Pilih tool di atas untuk mulai edit</p>
+          <p className="text-gray-600 dark:text-gray-500 text-sm">Pilih tool di atas untuk mulai edit</p>
           <div className="space-y-2 text-left">
             {Object.entries(TOOL_HINTS).map(([tool, hint]) => (
-              <div key={tool} className="flex gap-2 text-xs text-gray-600">
+              <div key={tool} className="flex gap-2 text-xs text-gray-600 dark:text-gray-600">
                 <span className="text-indigo-500 shrink-0">›</span>
-                <span><span className="text-gray-400 capitalize">{tool.replace('-', ' ')}</span>: {hint}</span>
+                <span><span className="text-gray-800 dark:text-gray-400 capitalize">{tool.replace('-', ' ')}</span>: {hint}</span>
               </div>
             ))}
           </div>
@@ -78,7 +78,7 @@ export function EditorPage() {
           </div>
 
           {originalFile && (
-            <div className="flex items-center justify-between text-xs text-gray-600 px-1 shrink-0">
+            <div className="flex items-center justify-between text-xs text-gray-600 dark:text-gray-600 px-1 shrink-0">
               <span className="truncate max-w-[60%]" title={originalFile.name}>
                 {originalFile.name}
               </span>
@@ -89,7 +89,7 @@ export function EditorPage() {
 
         {/* Bawah (mobile) / Kanan (desktop): tool panel */}
         <div className="editor-sidebar">
-          <div className="px-4 pt-4 pb-3 border-b border-gray-800 shrink-0">
+          <div className="px-4 pt-4 pb-3 border-b border-gray-300 dark:border-gray-800 shrink-0">
             <ToolSelector />
           </div>
 
@@ -97,7 +97,7 @@ export function EditorPage() {
             <ActivePanel />
           </div>
 
-          <div className="px-4 py-3 border-t border-gray-800 shrink-0">
+          <div className="px-4 py-3 border-t border-gray-300 dark:border-gray-800 shrink-0">
             <ActionBar />
           </div>
         </div>

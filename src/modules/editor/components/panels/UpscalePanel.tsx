@@ -84,7 +84,7 @@ export function UpscalePanel() {
   return (
     <div className="space-y-4">
       {/* Mode toggle */}
-      <div className="grid grid-cols-2 gap-1.5 bg-gray-900 p-1 rounded-lg border border-gray-800">
+      <div className="grid grid-cols-2 gap-1.5 bg-gray-100 p-1 rounded-lg border border-gray-300 dark:bg-gray-900 dark:border-gray-800">
         {(['upscale', 'downscale'] as Mode[]).map((m) => (
           <button
             key={m}
@@ -95,8 +95,8 @@ export function UpscalePanel() {
             className={cn(
               'flex items-center justify-center gap-1.5 py-2 rounded-md text-xs font-semibold transition-colors',
               mode === m
-                ? 'bg-gray-700 text-gray-100'
-                : 'text-gray-500 hover:text-gray-300',
+                ? 'bg-white text-gray-900 shadow-sm dark:bg-gray-700 dark:text-gray-100 dark:shadow-none'
+                : 'text-gray-500 hover:text-gray-700 dark:hover:text-gray-300',
             )}
           >
             {m === 'upscale' ? <ArrowUp size={13} /> : <ArrowDown size={13} />}
@@ -109,13 +109,13 @@ export function UpscalePanel() {
       {origW > 0 && (
         <>
           <div>
-            <p className="text-xs font-medium text-gray-400 mb-2">Preset</p>
+            <p className="text-xs font-medium text-gray-600 dark:text-gray-400 mb-2">Preset</p>
             <div className="grid grid-cols-4 gap-1.5">
               {presets.map((p) => (
                 <button
                   key={p.label}
                   onClick={() => applyPreset(p.factor)}
-                  className="py-2 rounded-lg border border-gray-700 text-xs font-semibold text-gray-400 hover:border-indigo-500 hover:text-indigo-400 transition-colors"
+                  className="py-2 rounded-lg border border-gray-300 dark:border-gray-700 text-xs font-semibold text-gray-600 dark:text-gray-400 hover:border-indigo-500 hover:text-indigo-500 dark:hover:text-indigo-400 transition-colors"
                 >
                   {p.label}
                 </button>
@@ -124,8 +124,8 @@ export function UpscalePanel() {
           </div>
 
           <div className="relative">
-            <div className="absolute inset-x-0 top-1/2 border-t border-gray-800" />
-            <span className="relative bg-gray-950 px-2 text-xs text-gray-600 left-1/2 -translate-x-1/2 block text-center w-fit">
+            <div className="absolute inset-x-0 top-1/2 border-t border-gray-200 dark:border-gray-800" />
+            <span className="relative bg-gray-50 dark:bg-gray-950 px-2 text-xs text-gray-500 dark:text-gray-600 left-1/2 -translate-x-1/2 block text-center w-fit">
               atau custom
             </span>
           </div>
@@ -152,22 +152,22 @@ export function UpscalePanel() {
           <button
             onClick={() => setLock((v) => !v)}
             className={`flex items-center gap-2 text-xs font-medium transition-colors ${
-              lock ? 'text-indigo-400' : 'text-gray-500 hover:text-gray-400'
+              lock ? 'text-indigo-500 dark:text-indigo-400' : 'text-gray-500 hover:text-gray-700 dark:hover:text-gray-400'
             }`}
           >
             {lock ? <Lock size={13} /> : <LockOpen size={13} />}
             {lock ? 'Rasio terkunci' : 'Rasio bebas'}
           </button>
 
-          <div className="text-xs text-gray-500 bg-gray-900 rounded-lg px-3 py-2 border border-gray-800">
+          <div className="text-xs text-gray-600 bg-white shadow-sm dark:bg-gray-900 dark:shadow-none rounded-lg px-3 py-2 border border-gray-300 dark:border-gray-800">
             <div className="flex justify-between">
               <span>Original</span>
-              <span className="font-mono text-gray-400">{origW} × {origH}</span>
+              <span className="font-mono text-gray-800 dark:text-gray-400">{origW} × {origH}</span>
             </div>
             {newW > 0 && newH > 0 && (
               <div className="flex justify-between mt-1">
                 <span>Target</span>
-                <span className={`font-mono font-medium ${newW > origW ? 'text-amber-400' : 'text-emerald-400'}`}>
+                <span className={`font-mono font-medium ${newW > origW ? 'text-amber-600 dark:text-amber-400' : 'text-emerald-600 dark:text-emerald-400'}`}>
                   {newW} × {newH}
                 </span>
               </div>

@@ -3,6 +3,9 @@
 /* Explicit source scan — wajib di Tailwind v4 + lazy routes */
 @source "../src";
 
+/* Dark mode manual via class .dark di <html>, bukan prefers-color-scheme */
+@custom-variant dark (&:where(.dark, .dark *));
+
 /*
   Override breakpoint ke syntax @media (min-width:...) tradisional.
   Tailwind v4 default pakai @media (width>=Xrem) — CSS Level 4 range syntax.
@@ -54,8 +57,8 @@
   min-height: 0;
   display: flex;
   flex-direction: column;
-  background-color: #030712;   /* bg-gray-950 */
-  border-top: 1px solid #1f2937; /* border-gray-800 */
+  background-color: var(--color-editor-sidebar-bg);
+  border-top: 1px solid var(--color-editor-sidebar-border);
   overflow: hidden;
 }
 
@@ -74,13 +77,24 @@
     flex: none;
     width: 20rem; /* w-80 */
     border-top: none;
-    border-left: 1px solid #1f2937;
+    border-left: 1px solid var(--color-editor-sidebar-border);
   }
 }
 
 @layer base {
+  :root {
+    --color-editor-sidebar-bg: #fafafa;   /* gray-50 */
+    --color-editor-sidebar-border: #d1d5db; /* gray-300 */
+  }
+
+  .dark {
+    --color-editor-sidebar-bg: #030712;   /* gray-950 */
+    --color-editor-sidebar-border: #1f2937; /* gray-800 */
+  }
+
   body {
-    @apply bg-gray-950 text-gray-100 antialiased min-h-screen;
+    @apply bg-gray-50 text-gray-900 antialiased min-h-screen;
+    @apply dark:bg-gray-950 dark:text-gray-100;
   }
 
   ::-webkit-scrollbar {
@@ -89,14 +103,14 @@
   }
 
   ::-webkit-scrollbar-track {
-    @apply bg-gray-900;
+    @apply bg-gray-200 dark:bg-gray-900;
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-gray-700 rounded-full;
+    @apply bg-gray-400 dark:bg-gray-700 rounded-full;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-gray-600;
+    @apply bg-gray-500 dark:bg-gray-600;
   }
 }

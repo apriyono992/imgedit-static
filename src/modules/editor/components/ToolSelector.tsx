@@ -26,8 +26,8 @@ export function ToolSelector() {
             'flex flex-col items-center gap-1.5 py-2.5 px-1 rounded-lg text-xs font-medium transition-colors',
             'disabled:opacity-40 disabled:cursor-not-allowed',
             activeTool === name
-              ? 'bg-indigo-600/20 text-indigo-400 border border-indigo-600/30'
-              : 'text-gray-500 hover:text-gray-300 hover:bg-gray-800',
+              ? 'bg-indigo-600/15 text-indigo-600 dark:bg-indigo-600/20 dark:text-indigo-400 border border-indigo-600/30'
+              : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100 dark:text-gray-500 dark:hover:text-gray-300 dark:hover:bg-gray-800',
           )}
         >
           <Icon size={17} />

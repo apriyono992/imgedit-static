@@ -14,8 +14,10 @@ interface ButtonProps extends ComponentProps<'button'> {
 
 const variantClasses: Record<ButtonVariant, string> = {
   primary: 'bg-indigo-600 hover:bg-indigo-500 text-white border-transparent',
-  secondary: 'bg-gray-700 hover:bg-gray-600 text-gray-100 border-transparent',
-  ghost: 'bg-transparent hover:bg-gray-800 text-gray-300 hover:text-gray-100 border-gray-700',
+  secondary:
+    'bg-gray-200 hover:bg-gray-300 text-gray-900 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-gray-100 border-transparent',
+  ghost:
+    'bg-transparent hover:bg-gray-100 text-gray-600 hover:text-gray-900 border-gray-400 dark:hover:bg-gray-800 dark:text-gray-300 dark:hover:text-gray-100 dark:border-gray-700',
   danger: 'bg-red-600 hover:bg-red-500 text-white border-transparent',
 }
 
@@ -41,7 +43,7 @@ export function Button({
       className={cn(
         'inline-flex items-center justify-center gap-2 rounded-lg border font-medium',
         'transition-colors focus-visible:outline-none focus-visible:ring-2',
-        'focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-950',
+        'focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-950',
         'disabled:opacity-50 disabled:cursor-not-allowed',
         variantClasses[variant],
         sizeClasses[size],

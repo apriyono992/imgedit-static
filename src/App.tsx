@@ -5,7 +5,7 @@ import { Spinner } from '@/components/ui/Spinner'
 
 function FullPageSpinner() {
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-950">
+    <div className="flex items-center justify-center min-h-screen bg-gray-50 dark:bg-gray-950">
       <Spinner size="lg" />
     </div>
   )

@@ -104,15 +104,15 @@ export function ActionBar() {
   return (
     <div className="space-y-2">
       {/* Result info */}
-      <div className="bg-gray-900 border border-gray-800 rounded-lg px-3 py-2 text-xs space-y-1">
-        <div className="flex items-center justify-between text-gray-500">
+      <div className="bg-white border border-gray-300 shadow-sm dark:bg-gray-900 dark:border-gray-800 dark:shadow-none rounded-lg px-3 py-2 text-xs space-y-1">
+        <div className="flex items-center justify-between text-gray-600">
           <span>Ukuran file</span>
-          <span className="text-gray-300 font-mono">{formatBytes(resultBlob.size)}</span>
+          <span className="text-gray-800 dark:text-gray-300 font-mono">{formatBytes(resultBlob.size)}</span>
         </div>
         {resultDims && (
-          <div className="flex items-center justify-between text-gray-500">
+          <div className="flex items-center justify-between text-gray-600">
             <span>Dimensi</span>
-            <span className="text-gray-300 font-mono">{resultDims.w} × {resultDims.h} px</span>
+            <span className="text-gray-800 dark:text-gray-300 font-mono">{resultDims.w} × {resultDims.h} px</span>
           </div>
         )}
       </div>

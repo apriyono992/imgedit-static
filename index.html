@@ -6,6 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Imegedit — Edit Gambar di Browser</title>
     <meta name="description" content="Crop, resize, remove background, reformat, dan upscale gambar langsung di browser. Tanpa upload ke server." />
+    <script>
+      // Set tema sebelum paint agar tidak ada flash — default light jika belum pernah diset
+      if (localStorage.getItem('imegedit-theme') === 'dark') {
+        document.documentElement.classList.add('dark')
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>

@@ -63,8 +63,8 @@ export function ResizePanel() {
   return (
     <div className="space-y-4">
       {origW > 0 && (
-        <div className="text-xs text-gray-500 bg-gray-900 rounded-lg px-3 py-2 border border-gray-800">
-          Original: <span className="text-gray-300 font-mono">{origW} × {origH} px</span>
+        <div className="text-xs text-gray-600 bg-white shadow-sm dark:bg-gray-900 dark:shadow-none rounded-lg px-3 py-2 border border-gray-300 dark:border-gray-800">
+          Original: <span className="text-gray-800 dark:text-gray-300 font-mono">{origW} × {origH} px</span>
           {currentBlob && <> · {formatBytes(currentBlob.size)}</>}
         </div>
       )}
@@ -91,7 +91,7 @@ export function ResizePanel() {
       <button
         onClick={() => setLock((v) => !v)}
         className={`flex items-center gap-2 text-xs font-medium transition-colors ${
-          lock ? 'text-indigo-400' : 'text-gray-500 hover:text-gray-400'
+          lock ? 'text-indigo-500 dark:text-indigo-400' : 'text-gray-500 hover:text-gray-700 dark:hover:text-gray-400'
         }`}
       >
         {lock ? <Lock size={13} /> : <LockOpen size={13} />}
@@ -99,8 +99,8 @@ export function ResizePanel() {
       </button>
 
       {newW > 0 && newH > 0 && (newW !== origW || newH !== origH) && (
-        <p className="text-xs text-gray-500">
-          Target: <span className="text-gray-300 font-mono">{newW} × {newH} px</span>
+        <p className="text-xs text-gray-600 dark:text-gray-500">
+          Target: <span className="text-gray-800 dark:text-gray-300 font-mono">{newW} × {newH} px</span>
           {newW > origW || newH > origH ? (
             <span className="ml-2 text-amber-500">↑ Upscale</span>
           ) : (

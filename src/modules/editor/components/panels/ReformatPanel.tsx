@@ -51,14 +51,14 @@ export function ReformatPanel() {
   return (
     <div className="space-y-5">
       {currentBlob && (
-        <div className="text-xs text-gray-500 bg-gray-900 rounded-lg px-3 py-2 border border-gray-800">
-          Original: <span className="text-gray-300 font-mono">{originalFormat.split('/')[1].toUpperCase()}</span>
+        <div className="text-xs text-gray-600 bg-white shadow-sm dark:bg-gray-900 dark:shadow-none rounded-lg px-3 py-2 border border-gray-300 dark:border-gray-800">
+          Original: <span className="text-gray-800 dark:text-gray-300 font-mono">{originalFormat.split('/')[1].toUpperCase()}</span>
           {' '}· {formatBytes(currentBlob.size)}
         </div>
       )}
 
       <div>
-        <p className="text-xs font-medium text-gray-400 mb-2.5">Format Output</p>
+        <p className="text-xs font-medium text-gray-600 dark:text-gray-400 mb-2.5">Format Output</p>
         <div className="grid grid-cols-3 gap-2">
           {FORMATS.map((f) => (
             <button
@@ -68,7 +68,7 @@ export function ReformatPanel() {
                 'py-2.5 rounded-lg border text-sm font-semibold transition-colors',
                 format === f.mime
                   ? 'bg-indigo-600 border-indigo-600 text-white'
-                  : 'bg-transparent border-gray-700 text-gray-400 hover:border-gray-600 hover:text-gray-300',
+                  : 'bg-transparent border-gray-300 text-gray-500 hover:border-gray-400 hover:text-gray-700 dark:border-gray-700 dark:text-gray-400 dark:hover:border-gray-600 dark:hover:text-gray-300',
               )}
             >
               {f.label}
@@ -80,8 +80,8 @@ export function ReformatPanel() {
       {supportsQuality && (
         <div>
           <div className="flex items-center justify-between mb-2">
-            <p className="text-xs font-medium text-gray-400">Kualitas</p>
-            <span className="text-xs font-mono text-indigo-400">{Math.round(quality * 100)}%</span>
+            <p className="text-xs font-medium text-gray-600 dark:text-gray-400">Kualitas</p>
+            <span className="text-xs font-mono text-indigo-500 dark:text-indigo-400">{Math.round(quality * 100)}%</span>
           </div>
           <input
             type="range"
@@ -91,7 +91,7 @@ export function ReformatPanel() {
             onChange={(e) => setQuality(Number(e.target.value) / 100)}
             className="w-full accent-indigo-500"
           />
-          <div className="flex justify-between text-[10px] text-gray-600 mt-1">
+          <div className="flex justify-between text-[10px] text-gray-500 dark:text-gray-600 mt-1">
             <span>Lebih kecil</span>
             <span>Lebih tajam</span>
           </div>

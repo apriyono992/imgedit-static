@@ -16,7 +16,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     return (
       <div className="w-full">
         {label && (
-          <label htmlFor={inputId} className="block text-sm font-medium text-gray-300 mb-1.5">
+          <label htmlFor={inputId} className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
             {label}
           </label>
         )}
@@ -30,11 +30,12 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             ref={ref}
             id={inputId}
             className={cn(
-              'w-full rounded-lg border bg-gray-900 text-gray-100 placeholder-gray-600',
+              'w-full rounded-lg border bg-white text-gray-900 placeholder-gray-400',
+              'dark:bg-gray-900 dark:text-gray-100 dark:placeholder-gray-600',
               'px-3 py-2 text-sm transition-colors',
               'focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent',
               'disabled:opacity-50 disabled:cursor-not-allowed',
-              error ? 'border-red-500' : 'border-gray-700',
+              error ? 'border-red-500' : 'border-gray-400 dark:border-gray-700',
               leftElement && 'pl-10',
               rightElement && 'pr-10',
               className,
@@ -48,7 +49,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           )}
         </div>
         {error && <p className="mt-1 text-xs text-red-400">{error}</p>}
-        {hint && !error && <p className="mt-1 text-xs text-gray-500">{hint}</p>}
+        {hint && !error && <p className="mt-1 text-xs text-gray-600 dark:text-gray-500">{hint}</p>}
       </div>
     )
   },

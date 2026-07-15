@@ -91,8 +91,8 @@ export function RemoveBgPanel() {
     <div className="space-y-4">
       {!removed ? (
         <>
-          <div className="bg-gray-900 border border-gray-800 rounded-lg p-4 text-xs text-gray-500 leading-relaxed">
-            <p className="text-gray-400 font-medium mb-1">Model AI berjalan di browser</p>
+          <div className="bg-white border border-gray-300 shadow-sm dark:bg-gray-900 dark:border-gray-800 dark:shadow-none rounded-lg p-4 text-xs text-gray-600 leading-relaxed">
+            <p className="text-gray-700 dark:text-gray-400 font-medium mb-1">Model AI berjalan di browser</p>
             <p>Gambarmu tidak dikirim ke server. Model diunduh sekali ~15 MB lalu tersimpan di browser.</p>
           </div>
           <Button
@@ -111,7 +111,7 @@ export function RemoveBgPanel() {
           </div>
 
           <div>
-            <p className="text-xs font-medium text-gray-400 mb-2.5">Ganti Background (opsional)</p>
+            <p className="text-xs font-medium text-gray-600 dark:text-gray-400 mb-2.5">Ganti Background (opsional)</p>
             <div className="space-y-2">
               {(
                 [
@@ -126,8 +126,8 @@ export function RemoveBgPanel() {
                   className={cn(
                     'w-full flex items-center gap-3 px-3 py-2.5 rounded-lg border text-sm font-medium transition-colors text-left',
                     bgType === val
-                      ? 'bg-indigo-600/20 border-indigo-600/40 text-indigo-300'
-                      : 'bg-transparent border-gray-700 text-gray-400 hover:border-gray-600 hover:text-gray-300',
+                      ? 'bg-indigo-600/15 border-indigo-600/40 text-indigo-700 dark:bg-indigo-600/20 dark:text-indigo-300'
+                      : 'bg-transparent border-gray-300 text-gray-500 hover:border-gray-400 hover:text-gray-700 dark:border-gray-700 dark:text-gray-400 dark:hover:border-gray-600 dark:hover:text-gray-300',
                   )}
                 >
                   {Icon && <Icon size={15} />}
@@ -139,14 +139,14 @@ export function RemoveBgPanel() {
 
           {bgType === 'color' && (
             <div className="flex items-center gap-3">
-              <label className="text-xs text-gray-400">Warna:</label>
+              <label className="text-xs text-gray-600 dark:text-gray-400">Warna:</label>
               <input
                 type="color"
                 value={bgColor}
                 onChange={(e) => setBgColor(e.target.value)}
-                className="w-9 h-9 rounded-lg border border-gray-700 bg-transparent cursor-pointer p-0.5"
+                className="w-9 h-9 rounded-lg border border-gray-300 dark:border-gray-700 bg-transparent cursor-pointer p-0.5"
               />
-              <span className="text-xs text-gray-500 font-mono">{bgColor.toUpperCase()}</span>
+              <span className="text-xs text-gray-600 dark:text-gray-500 font-mono">{bgColor.toUpperCase()}</span>
             </div>
           )}
 
@@ -161,7 +161,7 @@ export function RemoveBgPanel() {
               />
               <label
                 htmlFor="bg-file-input"
-                className="flex items-center justify-center gap-2 w-full py-2 border border-dashed border-gray-700 rounded-lg text-sm text-gray-500 hover:border-gray-600 hover:text-gray-400 cursor-pointer transition-colors"
+                className="flex items-center justify-center gap-2 w-full py-2 border border-dashed border-gray-300 dark:border-gray-700 rounded-lg text-sm text-gray-500 hover:border-gray-400 hover:text-gray-700 dark:hover:border-gray-600 dark:hover:text-gray-400 cursor-pointer transition-colors"
               >
                 <ImagePlus size={15} />
                 {bgFile ? bgFile.name : 'Pilih gambar background'}

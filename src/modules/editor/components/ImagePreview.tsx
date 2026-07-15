@@ -54,11 +54,13 @@ export function ImagePreview() {
       />
 
       {resultBlob && (
-        <div className="absolute top-3 right-3 flex bg-gray-900/90 backdrop-blur rounded-lg p-1 gap-1 border border-gray-800">
+        <div className="absolute top-3 right-3 flex bg-white/90 dark:bg-gray-900/90 backdrop-blur rounded-lg p-1 gap-1 border border-gray-300 shadow-sm dark:border-gray-800 dark:shadow-none">
           <button
             onClick={() => setShowResult(false)}
             className={`px-3 py-1 rounded-md text-xs font-medium transition-colors ${
-              !showResult ? 'bg-gray-200 text-gray-900' : 'text-gray-400 hover:text-gray-200'
+              !showResult
+                ? 'bg-gray-800 text-white dark:bg-gray-200 dark:text-gray-900'
+                : 'text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-200'
             }`}
           >
             Sebelum
@@ -66,7 +68,9 @@ export function ImagePreview() {
           <button
             onClick={() => setShowResult(true)}
             className={`px-3 py-1 rounded-md text-xs font-medium transition-colors ${
-              showResult ? 'bg-indigo-600 text-white' : 'text-gray-400 hover:text-gray-200'
+              showResult
+                ? 'bg-indigo-600 text-white'
+                : 'text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-200'
             }`}
           >
             Sesudah

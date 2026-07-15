@@ -43,8 +43,8 @@ export function UploadZone() {
           <div className="w-14 h-14 bg-indigo-600/15 rounded-2xl flex items-center justify-center mx-auto mb-4">
             <ImageIcon className="text-indigo-400" size={28} />
           </div>
-          <h1 className="text-2xl font-bold text-gray-100 mb-1">Editor Gambar</h1>
-          <p className="text-sm text-gray-500">Semua proses terjadi di browser — gambarmu tidak dikirim ke server</p>
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-1">Editor Gambar</h1>
+          <p className="text-sm text-gray-600 dark:text-gray-500">Semua proses terjadi di browser — gambarmu tidak dikirim ke server</p>
         </div>
 
         <div
@@ -56,21 +56,21 @@ export function UploadZone() {
             'border-2 border-dashed rounded-2xl p-14 text-center cursor-pointer transition-all',
             isDragging
               ? 'border-indigo-500 bg-indigo-500/10 scale-[1.02]'
-              : 'border-gray-700 hover:border-gray-600 hover:bg-gray-900',
+              : 'border-gray-400 hover:border-gray-500 hover:bg-gray-100 dark:border-gray-700 dark:hover:border-gray-600 dark:hover:bg-gray-900',
           )}
         >
           <Upload
             size={36}
             className={cn(
               'mx-auto mb-4 transition-colors',
-              isDragging ? 'text-indigo-400' : 'text-gray-600',
+              isDragging ? 'text-indigo-400' : 'text-gray-500 dark:text-gray-600',
             )}
           />
-          <p className="text-gray-300 font-medium mb-1.5">
+          <p className="text-gray-700 dark:text-gray-300 font-medium mb-1.5">
             {isDragging ? 'Lepaskan gambar di sini' : 'Drag & drop gambar di sini'}
           </p>
-          <p className="text-sm text-gray-600">atau klik untuk pilih file</p>
-          <p className="text-xs text-gray-700 mt-3">JPEG · PNG · WebP · GIF · BMP · max 30 MB</p>
+          <p className="text-sm text-gray-600 dark:text-gray-600">atau klik untuk pilih file</p>
+          <p className="text-xs text-gray-500 dark:text-gray-700 mt-3">JPEG · PNG · WebP · GIF · BMP · max 30 MB</p>
         </div>
 
         <input

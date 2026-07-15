@@ -103,7 +103,7 @@ export function CropPanel() {
   return (
     <div className="space-y-4">
       <div>
-        <p className="text-xs font-medium text-gray-400 mb-2">Rasio</p>
+        <p className="text-xs font-medium text-gray-600 dark:text-gray-400 mb-2">Rasio</p>
         <div className="flex flex-wrap gap-1.5">
           {ASPECTS.map((opt) => (
             <button
@@ -113,7 +113,7 @@ export function CropPanel() {
                 'px-3 py-1 rounded-md text-xs font-medium border transition-colors',
                 aspect === opt.value
                   ? 'bg-indigo-600 border-indigo-600 text-white'
-                  : 'bg-transparent border-gray-700 text-gray-400 hover:border-gray-600 hover:text-gray-300',
+                  : 'bg-transparent border-gray-300 text-gray-500 hover:border-gray-400 hover:text-gray-700 dark:border-gray-700 dark:text-gray-400 dark:hover:border-gray-600 dark:hover:text-gray-300',
               )}
             >
               {opt.label}
@@ -123,7 +123,7 @@ export function CropPanel() {
       </div>
 
       {imageUrl && (
-        <div className="rounded-lg overflow-hidden bg-gray-800 border border-gray-700">
+        <div className="rounded-lg overflow-hidden bg-gray-100 border border-gray-400 dark:bg-gray-800 dark:border-gray-700">
           <ReactCrop
             crop={crop}
             onChange={(_, pct) => setCrop(pct)}
@@ -144,7 +144,7 @@ export function CropPanel() {
       )}
 
       {validCrop && (
-        <p className="text-xs text-gray-500">
+        <p className="text-xs text-gray-600 dark:text-gray-500">
           Seleksi: {Math.floor(completedCrop.width)} × {Math.floor(completedCrop.height)} px
           (tampilan)
         </p>

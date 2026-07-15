@@ -84,7 +84,7 @@ export function RotatePanel() {
 
   return (
     <div className="space-y-3">
-      <p className="text-xs text-gray-500 leading-relaxed">
+      <p className="text-xs text-gray-600 dark:text-gray-500 leading-relaxed">
         Klik aksi untuk langsung menerapkan dan melihat hasilnya di preview.
       </p>
       <div className="space-y-2">
@@ -92,7 +92,7 @@ export function RotatePanel() {
           <button
             key={label}
             onClick={() => apply(fn, label)}
-            className="w-full flex items-center gap-3 px-4 py-3 bg-gray-900 border border-gray-800 hover:border-indigo-600/40 hover:bg-gray-800 rounded-xl text-sm text-gray-300 hover:text-gray-100 transition-all text-left group"
+            className="w-full flex items-center gap-3 px-4 py-3 bg-white border border-gray-300 shadow-sm hover:border-indigo-600/40 hover:bg-gray-50 dark:bg-gray-900 dark:border-gray-800 dark:shadow-none dark:hover:bg-gray-800 rounded-xl text-sm text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 transition-all text-left group"
           >
             <Icon size={16} className="text-indigo-400 shrink-0 group-hover:rotate-12 transition-transform" />
             {label}
