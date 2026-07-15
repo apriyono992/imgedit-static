@@ -1,7 +1,6 @@
 import { RotateCw, RotateCcw, FlipHorizontal, FlipVertical, RefreshCw } from 'lucide-react'
 import { useEditorStore } from '@/store/editorStore'
 import { blobToCanvas, canvasToBlob } from '@/utils/canvas'
-import { createActivityLog } from '@/api/activityLogs'
 import toast from 'react-hot-toast'
 
 function rotateCanvas(src: HTMLCanvasElement, deg: number): HTMLCanvasElement {
@@ -65,7 +64,6 @@ export function RotatePanel() {
 
   const apply = async (
     transformFn: (src: HTMLCanvasElement) => HTMLCanvasElement,
-    logMeta: Record<string, unknown>,
     label: string,
   ) => {
     if (!currentBlob) return
@@ -76,7 +74,6 @@ export function RotatePanel() {
       const dstCanvas = transformFn(srcCanvas)
       const blob = await canvasToBlob(dstCanvas, currentBlob.type || 'image/png')
       setResult(blob)
-      createActivityLog('rotate', logMeta)
       toast.success(`${label} berhasil!`)
     } catch {
       toast.error('Gagal memproses gambar')
@@ -91,10 +88,10 @@ export function RotatePanel() {
         Klik aksi untuk langsung menerapkan dan melihat hasilnya di preview.
       </p>
       <div className="space-y-2">
-        {TRANSFORMS.map(({ label, icon: Icon, fn, log }) => (
+        {TRANSFORMS.map(({ label, icon: Icon, fn }) => (
           <button
             key={label}
-            onClick={() => apply(fn, log, label)}
+            onClick={() => apply(fn, label)}
             className="w-full flex items-center gap-3 px-4 py-3 bg-gray-900 border border-gray-800 hover:border-indigo-600/40 hover:bg-gray-800 rounded-xl text-sm text-gray-300 hover:text-gray-100 transition-all text-left group"
           >
             <Icon size={16} className="text-indigo-400 shrink-0 group-hover:rotate-12 transition-transform" />

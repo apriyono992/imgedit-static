@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import { Lock, LockOpen, ArrowUp, ArrowDown } from 'lucide-react'
 import { useEditorStore } from '@/store/editorStore'
 import { picaResize } from '@/utils/picaResize'
-import { createActivityLog } from '@/api/activityLogs'
 import { Button } from '@/components/ui/Button'
 import { Input } from '@/components/ui/Input'
 import { cn } from '@/utils/cn'
@@ -72,7 +71,6 @@ export function UpscalePanel() {
       const blob = await picaResize(currentBlob, newW, newH, mime)
       setResult(blob)
       const toolName = newW > origW || newH > origH ? 'upscale' : 'downscale'
-      createActivityLog(toolName, { originalW: origW, originalH: origH, newW, newH })
       toast.success(`${toolName === 'upscale' ? 'Upscale' : 'Downscale'} berhasil!`)
     } catch {
       toast.error('Gagal memproses gambar')

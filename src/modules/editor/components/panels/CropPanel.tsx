@@ -8,7 +8,6 @@ import ReactCrop, {
 import 'react-image-crop/dist/ReactCrop.css'
 import { useEditorStore } from '@/store/editorStore'
 import { canvasToBlob } from '@/utils/canvas'
-import { createActivityLog } from '@/api/activityLogs'
 import { Button } from '@/components/ui/Button'
 import { cn } from '@/utils/cn'
 import toast from 'react-hot-toast'
@@ -91,12 +90,6 @@ export function CropPanel() {
 
       const blob = await canvasToBlob(canvas, currentBlob?.type || 'image/png')
       setResult(blob)
-      createActivityLog('crop', {
-        x: Math.floor(completedCrop.x * scaleX),
-        y: Math.floor(completedCrop.y * scaleY),
-        width: canvas.width,
-        height: canvas.height,
-      })
       toast.success('Crop berhasil!')
     } catch {
       toast.error('Gagal crop gambar')

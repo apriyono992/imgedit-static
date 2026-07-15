@@ -68,7 +68,6 @@ function mediaQueryCompat(): Plugin {
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
-  const backendUrl = env.BACKEND_URL ?? 'http://localhost:3000'
   const port = Number(env.PORT ?? 5173)
 
   return {
@@ -92,14 +91,6 @@ export default defineConfig(({ mode }) => {
       headers: {
         'Cross-Origin-Opener-Policy': 'same-origin',
         'Cross-Origin-Embedder-Policy': 'require-corp',
-      },
-      proxy: {
-        '/api': {
-          target: backendUrl,
-          changeOrigin: true,
-          rewrite: (path) => path.replace(/^\/api/, ''),
-          headers: { 'Cross-Origin-Resource-Policy': 'cross-origin' },
-        },
       },
     },
   }

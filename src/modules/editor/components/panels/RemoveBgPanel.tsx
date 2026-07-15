@@ -2,7 +2,6 @@ import { useState, useRef } from 'react'
 import { Eraser, CheckCircle2, Palette, ImagePlus } from 'lucide-react'
 import { useEditorStore } from '@/store/editorStore'
 import { blobToImageElement, canvasToBlob } from '@/utils/canvas'
-import { createActivityLog } from '@/api/activityLogs'
 import { Button } from '@/components/ui/Button'
 import toast from 'react-hot-toast'
 import { cn } from '@/utils/cn'
@@ -38,7 +37,6 @@ export function RemoveBgPanel() {
       setResult(result)
       setRemoved(true)
       setProgress(100)
-      createActivityLog('remove-background', { model: 'isnet' })
       toast.success('Background berhasil dihapus!')
     } catch {
       toast.error('Gagal menghapus background. Coba lagi.')
@@ -75,7 +73,6 @@ export function RemoveBgPanel() {
       const mime = bgType === 'transparent' ? 'image/png' : 'image/jpeg'
       const blob = await canvasToBlob(canvas, mime, 0.92)
       setResult(blob)
-      createActivityLog('change-background', { type: bgType })
       toast.success('Background berhasil diganti!')
     } catch {
       toast.error('Gagal mengganti background')

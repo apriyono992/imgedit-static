@@ -1,6 +1,5 @@
-import { useEffect, Suspense } from 'react'
+import { Suspense } from 'react'
 import { RouterProvider } from 'react-router-dom'
-import { useAuthStore } from '@/store/authStore'
 import { router } from '@/router'
 import { Spinner } from '@/components/ui/Spinner'
 
@@ -13,16 +12,6 @@ function FullPageSpinner() {
 }
 
 export function App() {
-  const { isInitializing, initialize } = useAuthStore()
-
-  useEffect(() => {
-    initialize()
-  }, [initialize])
-
-  if (isInitializing) {
-    return <FullPageSpinner />
-  }
-
   return (
     <Suspense fallback={<FullPageSpinner />}>
       <RouterProvider router={router} />

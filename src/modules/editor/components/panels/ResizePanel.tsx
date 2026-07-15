@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import { Lock, LockOpen } from 'lucide-react'
 import { useEditorStore } from '@/store/editorStore'
 import { picaResize } from '@/utils/picaResize'
-import { createActivityLog } from '@/api/activityLogs'
 import { Button } from '@/components/ui/Button'
 import { Input } from '@/components/ui/Input'
 import { formatBytes } from '@/utils/format'
@@ -53,7 +52,6 @@ export function ResizePanel() {
       const mime = currentBlob.type || 'image/png'
       const blob = await picaResize(currentBlob, newW, newH, mime)
       setResult(blob)
-      createActivityLog('resize', { originalW: origW, originalH: origH, newW, newH })
       toast.success('Resize berhasil!')
     } catch {
       toast.error('Gagal resize gambar')

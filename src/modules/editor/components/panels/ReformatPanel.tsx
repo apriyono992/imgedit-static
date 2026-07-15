@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { useEditorStore } from '@/store/editorStore'
 import { blobToImageElement, canvasToBlob } from '@/utils/canvas'
-import { createActivityLog } from '@/api/activityLogs'
 import { Button } from '@/components/ui/Button'
 import type { OutputFormat } from '@/types/editor'
 import { formatBytes } from '@/utils/format'
@@ -41,11 +40,6 @@ export function ReformatPanel() {
       ctx.drawImage(img, 0, 0)
       const blob = await canvasToBlob(canvas, format, supportsQuality ? quality : 1)
       setResult(blob)
-      createActivityLog('reformat', {
-        from: originalFormat,
-        to: format,
-        quality: supportsQuality ? quality : 1,
-      })
       toast.success('Reformat berhasil!')
     } catch {
       toast.error('Gagal reformat gambar')

@@ -171,8 +171,8 @@ const faqs = [
     a: 'Ya, semua fitur — crop, resize, remove background, reformat, dan upscale — tersedia gratis tanpa batas. Tidak perlu kartu kredit.',
   },
   {
-    q: 'Mengapa perlu daftar akun?',
-    a: 'Akun digunakan untuk menyimpan riwayat aktivitas editmu. Proses editing tetap terjadi di browser tanpa server — akun hanya untuk log dan manajemen sesi.',
+    q: 'Apakah perlu daftar akun?',
+    a: 'Tidak perlu. Imegedit tidak punya sistem akun — buka editor dan langsung mulai edit gambar.',
   },
 ]
 
@@ -220,11 +220,8 @@ export function LandingPage() {
 
           {/* Desktop nav */}
           <div className="hidden sm:flex items-center gap-3">
-            <Link to="/login" className="px-4 py-1.5 text-sm text-gray-400 hover:text-gray-100 transition-colors">
-              Masuk
-            </Link>
-            <Link to="/register" className="px-4 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-medium rounded-lg transition-colors">
-              Daftar Gratis
+            <Link to="/editor" className="px-4 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-medium rounded-lg transition-colors">
+              Mulai Edit
             </Link>
           </div>
 
@@ -243,18 +240,11 @@ export function LandingPage() {
           <div className="sm:hidden border-t border-gray-800 bg-gray-950">
             <div className="px-5 py-3 space-y-1">
               <Link
-                to="/login"
-                onClick={() => setMobileMenuOpen(false)}
-                className="block px-4 py-2.5 text-sm text-gray-300 hover:text-gray-100 hover:bg-gray-900 rounded-lg transition-colors"
-              >
-                Masuk
-              </Link>
-              <Link
-                to="/register"
+                to="/editor"
                 onClick={() => setMobileMenuOpen(false)}
                 className="block px-4 py-2.5 text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-500 rounded-lg transition-colors text-center"
               >
-                Daftar Gratis
+                Mulai Edit
               </Link>
             </div>
           </div>
@@ -281,11 +271,8 @@ export function LandingPage() {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-8">
-            <Link to="/register" className="w-full sm:w-auto px-6 py-3 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-xl transition-colors text-sm text-center" style={{ boxShadow: '0 8px 24px rgba(79,70,229,0.3)' }}>
+            <Link to="/editor" className="w-full sm:w-auto px-6 py-3 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-xl transition-colors text-sm text-center" style={{ boxShadow: '0 8px 24px rgba(79,70,229,0.3)' }}>
               Mulai Edit Gratis →
-            </Link>
-            <Link to="/login" className="w-full sm:w-auto px-6 py-3 bg-gray-800 hover:bg-gray-700 text-gray-200 font-semibold rounded-xl transition-colors text-sm text-center">
-              Sudah punya akun
             </Link>
           </div>
 
@@ -444,16 +431,15 @@ export function LandingPage() {
             Siap mulai mengedit?
           </h2>
           <p className="text-gray-400 mb-8 max-w-sm mx-auto">
-            Gratis, tanpa kartu kredit, tanpa batas fitur. Mulai dalam 30 detik.
+            Gratis, tanpa akun, tanpa batas fitur. Mulai dalam 30 detik.
           </p>
           <Link
-            to="/register"
+            to="/editor"
             className="inline-flex items-center gap-2 px-8 py-3.5 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-xl transition-colors text-base"
             style={{ boxShadow: '0 8px 24px rgba(79,70,229,0.35)' }}
           >
-            Buat Akun Gratis →
+            Mulai Edit Gratis →
           </Link>
-          <p className="text-xs text-gray-600 mt-4">Sudah punya akun? <Link to="/login" className="text-indigo-400 hover:text-indigo-300">Masuk di sini</Link></p>
         </div>
       </section>
 
@@ -477,9 +463,7 @@ export function LandingPage() {
               <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">Menu</p>
               <div className="space-y-2">
                 {[
-                  { to: '/register', label: 'Daftar Gratis' },
-                  { to: '/login', label: 'Masuk' },
-                  { to: '/app/editor', label: 'Editor' },
+                  { to: '/editor', label: 'Mulai Edit' },
                 ].map((l) => (
                   <Link key={l.to} to={l.to} className="block text-sm text-gray-500 hover:text-gray-300 transition-colors">
                     {l.label}
